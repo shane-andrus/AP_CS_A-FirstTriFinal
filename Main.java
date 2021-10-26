@@ -26,12 +26,12 @@ public class Main {
 
         while(isFighting) {
             // check if hero is dead
-            if (checkIfDead(pc)) {
+            if (pc.isDead()) {
                 System.out.println("You are dead!!!!");
                 break;
             }
             // check if bad guy is dead
-            if (checkIfDead(crow)) {
+            if (crow.isDead()) {
                 System.out.println("The crow has been slain!");
                 break;
             }
@@ -53,13 +53,5 @@ public class Main {
             }
 
         }
-    }
-
-    public static boolean checkIfDead(Hero hero) {
-        return hero.getHitPoints() <= 0;
-    }
-
-    public static boolean checkIfDead(BadGuy bg) {
-        return bg.getHitPoints() <= 0;
     }
 }

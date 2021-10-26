@@ -88,4 +88,8 @@ public class BadGuy {
     public void setScore(Score score) {
         this.score = score;
     }
+
+    public boolean isDead() {
+        return this.hitPoints <= 0;
+    }
 }
