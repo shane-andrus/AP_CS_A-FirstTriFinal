@@ -15,7 +15,7 @@ public class Main {
         Hero pc = new Hero("Prince Charming", blade, 150, 75, new Score());
 
         System.out.println("Our brave hero, " + pc.getName() + " starts his journey to find Sleeping Beauty.");
-        System.out.println("As he moves towards the castle to save the princess, " + pc.getName() + " encounters a rouge crow! The crow attacks!");
+        System.out.println("As he moves towards the castle to save the princess, " + pc.getName() + " encounters a rouge crow! The crow attacks!\n");
 
         Weapon beak = new Weapon("Crow's Beak", "Natural Attack", 100, 5);
         BadGuy crow = new BadGuy("Crow", beak, 25, 50, new Score());
@@ -50,8 +50,23 @@ public class Main {
                         System.out.println("Attack #" + (i+1) + " misses... ");
                     }
                 }
+                enemyAttack = !enemyAttack;
             }
-
+            else
+            {
+                System.out.println(pc.getName() + " attacks using " + pc.getWeapon().getName() + "!");
+                int result = Dice.roll();
+                System.out.println(pc.getName() + " rolls a " + result + ".");
+                if (result >= 8) {
+                    System.out.println("The attack connects dealing " + pc.getWeapon().getBaseDamage() + " damage.");
+                    crow.setHitPoints(crow.getHitPoints() - pc.getWeapon().getBaseDamage());
+                    System.out.println(crow.getName()+ ": " + crow.getHitPoints());
+                } else {
+                    System.out.println("The attack misses... ");
+                }
+                enemyAttack = !enemyAttack;
+            }
         }
+        System.out.println("\n" + pc.getName() + " has " + pc.getHitPoints() + " hit points remaining.");
     }
 }
